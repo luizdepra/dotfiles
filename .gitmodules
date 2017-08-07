@@ -1,0 +1,12 @@
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+[submodule "zim"]
+	path = zim
+	url = https://github.com/Eriner/zim.git
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule "asdf"]
+	path = asdf
+	url = https://github.com/asdf-vm/asdf.git

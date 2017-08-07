@@ -1,0 +1,9 @@
+[push]
+  default = current
+[color]
+  ui = auto
+[core]
+  excludesfile = ~/.gitignore_global
+[include]
+  path = ~/.gitconfig_extra
+
