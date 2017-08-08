@@ -6,17 +6,14 @@
 - clean: ['~']
 
 - link:
-    ~/.zim: 'zim'
     ~/.zimrc: 'zimrc'
     ~/.zshrc: 'zshrc'
     ~/.zlogin: 'zlogin'
     ~/.gitconfig: 'gitconfig'
     ~/.gitignore_global: 'gitignore_global'
     ~/.editorconfig: 'editorconfig'
-    ~/.tmux: 'tmux'
     ~/.tmux.conf: 'tmux.conf'
     ~/.config/nvim/init.vim: 'nvimrc'
-    ~/.asdf: 'asdf'
     ~/.tool-versions: 'tool-versions'
 
 - shell:

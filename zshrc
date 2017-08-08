@@ -5,3 +5,7 @@ fi
 
 # source asdf
 . $HOME/.asdf/asdf.sh
+
+# source direnv
+eval "$(direnv hook zsh)"
+

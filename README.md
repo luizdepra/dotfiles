@@ -1,44 +1,46 @@
 Luiz de Prá's dotfiles
 ======================
 
-*WARNING:* This dotfile configuration is broken right now. I'm refactoring to remove prezto and substitute it for zplug.
+*WARNING:* This dotfiles configuration is under constant modification.
 
-![Luiz de Prá's Terminal Example](https://raw.github.com/luizdepra/dotfiles/master/ss_luizdepra_terminal.png)
+## Configuration Files
 
-## Features
-
-* Dotfiles management via [dotbot](https://github.com/anishathalye/dotbot)
-* gitconfig
-* zsh and prezto config
-* tmux config
-* vim config (not finished yet)
+* git
+* zsh
+* zim
+* tmux
+* neovim
+* asdf
+* editorconfig
 
 ## How to use
 
-**Fork this repository is a nice idea. There are 99,99% of chance that you'll need to customize it.**
+Forking this repository is a nice idea. But, you can just clone it.
+
+This project uses **[dotbot](https://github.com/anishathalye/dotbot)** to handle installation.
 
 ### Prerequisites:
 
-* A terminal (I'm using Gnome Terminal)
+This repostiroty only holds configuration files. So, you'll need to install those first.
+
+* a terminal emulator (I'm using Gnome Terminal)
 * git
 * zsh
+* zim
 * tmux
+* neovim
+* asdf
+* direnv
 
 ### Configuring
 
-You may want to add, change or remove  some files. Just do it.
+You may want to add, change or remove some files. Do it.
 
 To configure what **dotbot** will do, edit `install.conf.yaml`.
 
 ### Installing
 
 Run `./install`.
-
-## TODO
-
-* Add my under construction color scheme
-* Add a really nice vim configuration
-* Add tmux plugins
 
 ## Thanks
 
