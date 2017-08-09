@@ -1,6 +1,6 @@
 # modules
 zmodules=(directory environment git git-info history input utility meta custom \
-          syntax-highlighting history-substring-search prompt completion)
+          syntax-highlighting history-substring-search autosuggestions prompt completion)
 
 # theme
 zprompt_theme='gitster'
