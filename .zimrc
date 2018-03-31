@@ -1,0 +1,15 @@
+# modules
+zmodules=(directory environment git git-info history input utility meta custom \
+          syntax-highlighting history-substring-search autosuggestions prompt completion)
+
+# theme
+zprompt_theme='gitster'
+
+# command correction prompts
+setopt CORRECT
+
+# terminal title
+ztermtitle='%n@%m:%~'
+
+# active highlighters
+zhighlighters=(main brackets)
