@@ -1,0 +1,20 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~']
+
+- link:
+    ~/.editorconfig:
+    ~/.gitconfig:
+    ~/.gitignore_global:
+    ~/.tmux.conf:
+    ~/.tool-versions:
+    ~/.zimrc:
+    ~/.zlogin:
+    ~/.zshrc:
+    ~/.config/nvim/init.vim: init.vim
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
