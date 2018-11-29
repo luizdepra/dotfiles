@@ -1,5 +1,5 @@
 # modules
-zmodules=(directory environment git git-info history input utility meta custom \
+zmodules=(directory environment git git-info history input utility custom \
           syntax-highlighting history-substring-search autosuggestions prompt completion)
 
 # theme
