@@ -4,6 +4,9 @@ export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 # Start zim
 [[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
 
+# autojump
+[[ -x $(which autojump) ]] && source /etc/profile.d/autojump.zsh
+
 # go
 if [[ -x $(which go) ]]; then
   export GOPATH=${HOME}/.go
