@@ -37,6 +37,7 @@
     enable = true
 
 [core]
+    editor = vim
     excludesfile = ~/.gitignore_global
 
 # Local configuration file

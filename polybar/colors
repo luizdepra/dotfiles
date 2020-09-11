@@ -1,0 +1,23 @@
+; vim: filetype=dosini
+
+[colors]
+background = ${env:PBC_BG}
+foreground = ${env:PBC_FG}
+alt_background = ${env:PBC_ALT_BG}
+alt_foreground = ${env:PBC_ALT_FG}
+
+red = ${env:PBC_RED}
+green = ${env:PBC_GREEN}
+yellow = ${env:PBC_YELLOW}
+blue = ${env:PBC_BLUE}
+purple = ${env:PBC_PURPLE}
+aqua = ${env:PBC_AQUA}
+gray = ${env:PBC_GRAY}
+light_red = ${env:PBC_LIGHT_RED}
+light_green = ${env:PBC_LIGHT_GREEN}
+light_yellow = ${env:PBC_LIGHT_YELLOW}
+light_blue = ${env:PBC_LIGHT_BLUE}
+light_purple = ${env:PBC_LIGHT_PURPLE}
+light_aqua = ${env:PBC_LIGHT_AQUA}
+light_gray = ${env:PBC_LIGHT_GRAY}
+

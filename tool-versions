@@ -1,3 +1,5 @@
 golang 1.13.5
 nodejs 13.5.0
 python 3.8.2
+erlang 23.0.3
+elixir 1.10.4-otp-23

@@ -1,0 +1,10 @@
+configuration {
+	modi: "window,run,drun,ssh";
+	font: "Hack Nerd Font 11";
+	bw: 2;
+	show-icons: true;
+	terminal: "alacritty";
+	separator-style: "solid";
+    display-drun: "search";
+    theme: "./gruvbox-dark.rasi";
+}

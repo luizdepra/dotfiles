@@ -1,0 +1,23 @@
+; vim: filetype=dosini
+
+[bar/main]
+monitor = ${env:MONITOR:eDP-1}
+bottom = true
+width = 100%
+height = 32
+fixed-center = true
+
+background = ${colors.background}
+foreground =  ${colors.foreground}
+
+font-0 = Hack Nerd Font Mono:fontformat=truetype:size=11;4
+font-1 = Font Awesome 5 Free Solid:pixelsize=12;3
+
+modules-left = i3 window
+modules-center = date 
+modules-right = updates sep keyboard sep volume sep backlight sep battery sep powermenu
+
+tray-position = none
+
+padding-right = 1
+

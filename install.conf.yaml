@@ -1,7 +1,7 @@
 - defaults:
     link:
-      relink: true
-      create: true
+        relink: true
+        create: true
 
 - clean: ['~']
 
@@ -11,11 +11,21 @@
     ~/.gitignore_global:
     ~/.tmux.conf:
     ~/.tool-versions:
+    ~/.zim:
     ~/.zimrc:
     ~/.zlogin:
+    ~/.zshenv:
     ~/.zshrc:
-    ~/.config/nvim/init.vim: init.vim
-    ~/.config/kitty/kitty.conf: kitty.conf
+    ~/.zprofile:
+    ~/.profile:
+    ~/.Xresources:
+    ~/.bin: bin
+    ~/.config/i3: i3
+    ~/.config/polybar: polybar
+    ~/.config/dunst: dunst
+    ~/.config/rofi: rofi
+    ~/.config/nvim: nvim
+    ~/.config/alacritty: alacritty
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]

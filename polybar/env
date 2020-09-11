@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# colors
+export PBC_BG="#282828"
+export PBC_ALT_BG="#3c3836"
+export PBC_FG="#ebdbb2"
+export PBC_ALT_FG="#a89984"
+export PBC_RED="#cc241d"
+export PBC_GREEN="#98971a"
+export PBC_YELLOW="#d79921"
+export PBC_BLUE="#458588"
+export PBC_PURPLE="#b16286"
+export PBC_AQUA="#689d6a"
+export PBC_GRAY="#928374"
+export PBC_LIGHT_RED="#fb4934"
+export PBC_LIGHT_GREEN="#b8bb26"
+export PBC_LIGHT_YELLOW="#fabd2f"
+export PBC_LIGHT_BLUE="#83a598"
+export PBC_LIGHT_PURPLE="#d3869b"
+export PBC_LIGHT_AQUA="#8ec07c"
+export PBC_LIGHT_GRAY="#a89984"
+
+# labels
+export PBL_TIME="%{T2}%{T-} %{F$PBC_ALT_FG}%H:%M%{F-}"
+
