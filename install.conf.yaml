@@ -21,6 +21,7 @@
     ~/.Xresources:
     ~/.bin: bin
     ~/.config/i3: i3
+    ~/.config/i3-scrot.conf: i3-scrot.conf
     ~/.config/polybar: polybar
     ~/.config/dunst: dunst
     ~/.config/rofi: rofi

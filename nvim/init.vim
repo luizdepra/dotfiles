@@ -73,3 +73,4 @@ set ruler
 set number
 
 silent! colorscheme gruvbox
+
