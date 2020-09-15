@@ -1,3 +1,5 @@
+"-- Plugin installation
+
 " Check Plug installation
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
@@ -26,7 +28,7 @@ Plug 'morhetz/gruvbox'
 
 call plug#end()
 
-" General configs
+"-- General configs
 
 " Default shell
 if exists('$SHELL')
@@ -67,10 +69,59 @@ set incsearch
 set ignorecase
 set smartcase
 
-" Visual
+"-- Visual
+
+" Editor
 syntax on
 set ruler
 set number
+set relativenumber
 
+" Scroll
+set scrolloff=4
+
+" Statusbar
+set laststatus=2
+
+" File modeline
+set modeline
+set modelines=10
+
+" Title
+set title
+set titleold="Terminal"
+set titlestring=%F
+
+" Whitespaces
+set list lcs=trail:•,tab:»•,nbsp:•,eol:¬
+
+" Line highlighting
+set cursorline
+highlight clear CursorLine
+highlight CursorLineNR ctermbg=red
+
+" Theme
 silent! colorscheme gruvbox
+let g:gruvbox_contrast_dark='medium'
+set background=dark
+
+"-- Plugins
+
+" Ale
+let g:ale_enabled = 1
+let b:ale_fixers = {
+\   'python': ['black', 'isort']
+\}
+let g:ale_fix_on_save = 0
+
+"-- Commands
+
+" remove trailing whitespaces
+command! FixWhitespace :%s/\s\+$//e
+
+"-- Mappings
+
+" Center search
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
