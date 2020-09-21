@@ -19,12 +19,26 @@ endif
 " Starts Plug
 call plug#begin(expand('~/.config/nvim/plugged'))
 
-Plug 'airblade/vim-gitgutter'
-Plug 'dense-analysis/ale'
-Plug 'sheerun/vim-polyglot'
-
-" Theme
+" Visual
 Plug 'morhetz/gruvbox'
+Plug 'itchyny/lightline.vim'
+Plug 'shinchu/lightline-gruvbox.vim'
+
+" Editor
+Plug 'editorconfig/editorconfig-vim'
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" LSP
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+
+" Autocomplete
+
+" Languages
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -32,9 +46,9 @@ call plug#end()
 
 " Default shell
 if exists('$SHELL')
-    set shell=$SHELL
+  set shell=$SHELL
 else
-    set shell=/bin/sh
+  set shell=/bin/sh
 endif
 
 " Map leader to ,
@@ -82,6 +96,7 @@ set scrolloff=4
 
 " Statusbar
 set laststatus=2
+set noshowmode
 
 " File modeline
 set modeline
@@ -107,10 +122,24 @@ set background=dark
 
 "-- Plugins
 
+" Lightline
+let g:lightline = {
+\   'colorscheme': 'gruvbox',
+\   'active': {
+\     'left': [
+\       [ 'mode', 'paste' ],
+\       [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+\     ]
+\   },
+\   'component_function': {
+\     'gitbranch': 'FugitiveHead'
+\   },
+\ }
+
 " Ale
 let g:ale_enabled = 1
 let b:ale_fixers = {
-\   'python': ['black', 'isort']
+\ 'python': ['black', 'isort']
 \}
 let g:ale_fix_on_save = 0
 
