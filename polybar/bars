@@ -1,7 +1,6 @@
 ; vim: filetype=dosini
 
 [bar/main]
-monitor = ${env:MONITOR:eDP-1}
 bottom = true
 width = 100%
 height = 32

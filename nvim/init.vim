@@ -139,7 +139,8 @@ let g:lightline = {
 " Ale
 let g:ale_enabled = 1
 let b:ale_fixers = {
-\ 'python': ['black', 'isort']
+\   'python': ['black', 'isort'],
+\   'rust': ['analyzer']
 \}
 let g:ale_fix_on_save = 0
 

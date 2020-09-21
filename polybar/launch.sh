@@ -12,17 +12,7 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 source "$CONF_PATH/env"
 
 # Launch polybars for every connected monitor
-if type "xrandr"; then
-  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    if [ "$m" = "eDP-1" ]; then
-        MONITOR=$m polybar -c "$CONF_PATH/config" main &
-    else
-        MONITOR=$m polybar -c "$CONF_PATH/config" secondary &
-    fi
-  done
-else
-  polybar -c "$CONF_PATH/config" main &
-fi
+polybar -c "$CONF_PATH/config" main &
 
 echo "Bars launched..."
 
