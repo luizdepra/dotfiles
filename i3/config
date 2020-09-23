@@ -185,13 +185,14 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
 assign [class="Chromium"] $ws1
-assign [class="Code"] $ws3
-assign [class="Discord"] $ws4
+assign [class="code-oss"] $ws3
+assign [class="discord"] $ws4
 assign [class="Telegram"] $ws4
-assign [class="OBS Studio"] $ws5
+assign [class="obs"] $ws5
 
 # Open specific applications in floating mode
 for_window [class=".*"] border pixel 2
+for_window [class="Pamac-manager"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -250,13 +251,13 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id blurlock
 
 # Volume keys
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+ 
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%- 
-bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle 
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 
 # Screen brightness keys
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # Touchpad controls
 # bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
