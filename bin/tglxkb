@@ -1,4 +1,0 @@
-#!/bin/bash
-
-setxkbmap -query | grep -q "layout:\s\+us" && setxkbmap br abnt2 || setxkbmap us alt-intl
-

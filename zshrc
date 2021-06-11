@@ -55,12 +55,6 @@ bindkey '^N' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-# Start gnome ssh keyring daemon
-if [ -n "$DESKTOP_SESSION" ];then
-    eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-    export SSH_AUTH_SOCK
-fi
-
 # Load local configuration
 if [[ -f ${HOME}/.zshrc_local ]]; then
     source ${HOME}/.zshrc_local
