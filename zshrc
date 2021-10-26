@@ -8,32 +8,10 @@ WORDCHARS=${WORDCHARS//[\/]}
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 # Start zim
-if [[ ${ZIM_HOME}/init.zsh -ot ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
   source ${ZIM_HOME}/zimfw.zsh init -q
 fi
 source ${ZIM_HOME}/init.zsh
-
-# go
-if [[ -x $(which go) ]]; then
-  export GOPATH=${HOME}/.go
-  export PATH=${PATH}:/usr/local/go/bin:${GOPATH}/bin
-fi
-
-# asdf
-if [[ -s ${HOME}/.asdf/asdf.sh ]]; then
-  . ${HOME}/.asdf/asdf.sh
-fi
-
-# direnv
-if [[ -x $(which direnv) ]]; then
-  eval "$(direnv hook zsh)"
-fi
-
-# pyenv
-if [[ -s ${HOME}/.pyenv ]]; then
-  export PYENV_ROOT="${HOME}/.pyenv"
-  export PATH="${PYENV_ROOT}/bin:${PATH}"
-fi
 
 # alias
 alias vim="nvim"
