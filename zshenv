@@ -6,6 +6,8 @@ export TERM=alacritty
 
 export PATH="$HOME/.cargo/bin:$HOME/bin:$PATH"
 
+export GPG_TTY=$(tty)
+
 export WINIT_HIDPI_FACTOR=1.0
 
 # rust
