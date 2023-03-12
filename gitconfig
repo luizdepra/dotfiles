@@ -29,6 +29,9 @@
 [pull]
     rebase = true
 
+[commit]
+    gpgsign = true
+
 [rebase]
     stat = true
     autosquash = true
