@@ -43,6 +43,9 @@
     editor = nvim
     excludesfile = ~/.gitignore_global
 
+[gpg]
+    format = ssh
+
 # Local configuration file
 [include]
     path = ~/.gitconfig_local
