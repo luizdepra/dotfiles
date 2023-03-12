@@ -19,11 +19,14 @@ if [[ -x $(which go) ]]; then
   export PATH=${PATH}:/usr/local/go/bin:${GOPATH}/bin
 fi
 
-# asdf
-[[ -s ${HOME}/.asdf/asdf.sh ]] && source ${HOME}/.asdf/asdf.sh
+# rtx
+[[ -x $(which rtx) ]] && eval "$(rtx activate zsh)"
 
 # direnv
 [[ -x $(which direnv) ]] && eval "$(direnv hook zsh)"
+
+# zoxide
+[[ -x $(which zoxide) ]] && eval "$(zoxide init zsh)"
 
 # Load local configuration
 [[ -f ${HOME}/.zshenv_local ]] && source ${HOME}/.zshenv_local
