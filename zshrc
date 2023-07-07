@@ -17,6 +17,9 @@ source ${ZIM_HOME}/init.zsh
 alias vim="nvim"
 alias vimdiff='nvim -d'
 alias vi="nvim"
+alias ls="exa"
+alias cat="bat"
+alias top="btm"
 
 # binds
 bindkey '^[[A' history-substring-search-up

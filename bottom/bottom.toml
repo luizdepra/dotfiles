@@ -1,0 +1,8 @@
+[flags]
+group_processes = true
+case_sensitive = false
+whole_word = false
+regex = true
+temperature_type = "c"
+default_widget_type = "cpu"
+default_widget_count = 1

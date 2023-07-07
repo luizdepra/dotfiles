@@ -10,6 +10,8 @@ export GPG_TTY=$(tty)
 
 export WINIT_HIDPI_FACTOR=1.0
 
+export RTX_USE_TOML=1
+
 # rust
 [[ -f ${HOME}/.cargo/env ]] && source ${HOME}/.cargo/env
 

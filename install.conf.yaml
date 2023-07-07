@@ -1,22 +1,24 @@
 - defaults:
     link:
-        relink: true
-        create: true
+      relink: true
+      create: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
     ~/.editorconfig:
     ~/.gitconfig:
     ~/.gitignore_global:
-    ~/.tmux.conf:
-    ~/.tool-versions:
     ~/.zimrc:
     ~/.zlogin:
     ~/.zshenv:
     ~/.zshrc:
     ~/.config/nvim: nvim
     ~/.config/alacritty: alacritty
+    ~/.config/bottom: bottom
+    ~/.config/bat: bat
+    ~/.config/rtx: rtx
+    ~/.config/zellij: zellij
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
