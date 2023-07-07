@@ -46,6 +46,9 @@
     editor = nvim
     excludesfile = ~/.gitignore_global
 
+[commit]
+    gpgsign = true
+
 [gpg]
     format = ssh
 
