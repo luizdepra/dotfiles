@@ -1,3 +1,5 @@
 nvim/autoload/
 nvim/plugged
+nvim/lazy-lock.json
+nvim/lazyvim.json
 zim/

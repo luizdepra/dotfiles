@@ -2,9 +2,8 @@
 
 export BROWSER=firefox
 export EDITOR=nvim
-export TERM=alacritty
 
-export PATH="$HOME/.cargo/bin:$HOME/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:$PATH"
 
 export GPG_TTY=$(tty)
 

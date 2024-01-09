@@ -19,6 +19,7 @@
     ~/.config/bat: bat
     ~/.config/rtx: rtx
     ~/.config/zellij: zellij
+    ~/.config/Code/User/settings.json: code/settings.json
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

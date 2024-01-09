@@ -7,23 +7,23 @@ bindkey -v
 WORDCHARS=${WORDCHARS//[\/]}
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
-# Install zim
+# Download zimfw plugin manager if missing.
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
   curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
       https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
 fi
-
-# Start zim
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
 if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
   source ${ZIM_HOME}/zimfw.zsh init -q
 fi
+# Start zimfw
 source ${ZIM_HOME}/init.zsh
 
 # alias
 alias vim="nvim"
 alias vimdiff='nvim -d'
 alias vi="nvim"
-alias ls="exa"
+alias ls="eza"
 alias cat="bat"
 alias top="btm"
 
