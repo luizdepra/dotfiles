@@ -17,7 +17,7 @@
     ~/.config/alacritty: alacritty
     ~/.config/bottom: bottom
     ~/.config/bat: bat
-    ~/.config/rtx: rtx
+    ~/.config/mise: mise
     ~/.config/zellij: zellij
     ~/.config/Code/User/settings.json: code/settings.json
 
