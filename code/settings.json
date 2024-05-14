@@ -24,5 +24,7 @@
     "editor.inlayHints.enabled": "offUnlessPressed",
     "[json]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "cmake.showOptionsMovedNotification": false,
+    "cargo.automaticCheck": false
 }

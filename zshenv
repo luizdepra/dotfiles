@@ -25,7 +25,7 @@ fi
 [[ -x $(which zoxide) ]] && eval "$(zoxide init zsh)"
 
 # zellij
-[[ -x $(which zellij) ]] && eval "$(zellij setup --generate-completion zsh | grep '^function')"
+[[ -x $(which zellij) ]] && eval "$(zellij setup --generate-completion zsh)"
 
 # Load local configuration
 [[ -f ${HOME}/.zshenv_local ]] && source ${HOME}/.zshenv_local
