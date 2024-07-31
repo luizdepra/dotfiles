@@ -3,8 +3,7 @@ legacy_version_file = false
 asdf_compat = false
 
 [tools]
-nodejs = "16.14.0"
 python = "latest"
-hugo = "extended_0.122.0"
 go = "1.21.6"
+hugo = "extended_0.125.3"
 node = "21.2.0"
