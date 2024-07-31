@@ -1,0 +1,11 @@
+#!/bin/bash
+
+branch=$1
+
+if [ ! -z "$1" ]
+then
+  git branch -D $branch
+  git push -d origin $branch
+else
+  echo "Branch name is not specified"
+fi

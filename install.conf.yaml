@@ -20,6 +20,8 @@
     ~/.config/mise: mise
     ~/.config/zellij: zellij
     ~/.config/Code/User/settings.json: code/settings.json
+    ~/bin:
+      path: bin
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

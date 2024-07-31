@@ -1,0 +1,12 @@
+#!/bin/bash
+
+DEFAULT_BRANCH=$(git default-branch)
+
+git checkout ${DEFAULT_BRANCH}
+git remote prune origin
+
+if [[ $1 == '-f' ]]; then
+    git branch | egrep -v "(^\*|${DEFAULT_BRANCH}|dev)" | xargs -r git branch -D
+else
+    git branch --merged | egrep -v "(^\*|${DEFAULT_BRANCH}|dev)" | xargs -r git branch -d
+fi
