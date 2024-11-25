@@ -52,6 +52,12 @@
 [gpg]
     format = ssh
 
+[includeIf "gitdir:~/dev/personal/**"]
+  path = ~/.config/git/personal
+
+[includeIf "gitdir:~/dev/labs/**"]
+  path = ~/.config/git/labs
+
 # Local configuration file
 [include]
     path = ~/.gitconfig_local

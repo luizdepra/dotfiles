@@ -1,31 +1,35 @@
 {
-  "workbench.colorTheme": "Catppuccin Mocha",
-  "workbench.iconTheme": "catppuccin-mocha",
-  "editor.fontFamily": "Hack, 'Droid Sans Mono', 'monospace', monospace",
-  "editor.renderWhitespace": "all",
-  "editor.wordWrap": "on",
-  "files.exclude": {
-    "**/__pycache__": true,
-    "**/.pytest_cache": true,
-    "**/.ruff_cache": true,
-    "**/node_modules": true
-  },
-  "editor.formatOnSave": true,
-  "editor.rulers": [
-    80,
-    120
-  ],
-  "files.insertFinalNewline": true,
-  "files.trimFinalNewlines": true,
-  "files.trimTrailingWhitespace": true,
-  "python.languageServer": "Pylance",
-  "python.testing.pytestEnabled": true,
-  "editor.scrollBeyondLastLine": false,
-  "editor.wordWrapColumn": 120,
-  "editor.inlayHints.enabled": "offUnlessPressed",
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "cargo.automaticCheck": false,
-  "cmake.showOptionsMovedNotification": false
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.iconTheme": "catppuccin-mocha",
+    "editor.fontFamily": "Hack, 'Droid Sans Mono', 'monospace', monospace",
+    "editor.renderWhitespace": "all",
+    "editor.wordWrap": "on",
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/.pytest_cache": true,
+      "**/.ruff_cache": true,
+      "**/node_modules": true
+    },
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "editor.rulers": [
+      80, 120
+    ],
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "python.languageServer": "Pylance",
+    "python.testing.pytestEnabled": true,
+    "python.analysis.autoImportCompletions": true,
+    "editor.scrollBeyondLastLine": false,
+    "editor.wordWrapColumn": 120,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "cargo.automaticCheck": false,
+    "cmake.showOptionsMovedNotification": false,
+    "redhat.telemetry.enabled": false
 }
