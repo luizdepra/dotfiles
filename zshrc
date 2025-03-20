@@ -4,6 +4,8 @@ setopt CORRECT
 
 bindkey -v
 
+fpath=(~/.zfunc $fpath)
+
 WORDCHARS=${WORDCHARS//[\/]}
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 

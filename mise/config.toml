@@ -4,7 +4,6 @@ asdf_compat = false
 
 [tools]
 python = "latest"
-go = "1.21.6"
-hugo = "extended_0.125.3"
-node = "21.2.0"
+hugo = "extended_0.139.3"
+go = "latest"
 rust = "latest"

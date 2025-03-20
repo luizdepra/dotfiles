@@ -31,5 +31,9 @@
     },
     "cargo.automaticCheck": false,
     "cmake.showOptionsMovedNotification": false,
-    "redhat.telemetry.enabled": false
+    "redhat.telemetry.enabled": false,
+    "luahelper.format.continuation_indent_width": 1,
+    "luahelper.format.indent_width": 1,
+    "luahelper.format.tab_width": 2,
+    "luahelper.format.use_tab": true
 }
