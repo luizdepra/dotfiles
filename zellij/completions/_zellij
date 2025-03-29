@@ -20,8 +20,10 @@ _zellij() {
 '*--server=[Run server listening at the specified socket path]:SERVER:_files' \
 '*-s+[Specify name of a new session]:SESSION: ' \
 '*--session=[Specify name of a new session]:SESSION: ' \
-'*-l+[Name of a predefined layout inside the layout directory or the path to a layout file]:LAYOUT:_files' \
-'*--layout=[Name of a predefined layout inside the layout directory or the path to a layout file]:LAYOUT:_files' \
+'*-l+[Name of a predefined layout inside the layout directory or the path to a layout file if inside a session (or using the --session flag) will be added to the session as a new tab or tabs, otherwise will start a new session]:LAYOUT:_files' \
+'*--layout=[Name of a predefined layout inside the layout directory or the path to a layout file if inside a session (or using the --session flag) will be added to the session as a new tab or tabs, otherwise will start a new session]:LAYOUT:_files' \
+'*-n+[Name of a predefined layout inside the layout directory or the path to a layout file Will always start a new session, even if inside an existing session]:NEW_SESSION_WITH_LAYOUT:_files' \
+'*--new-session-with-layout=[Name of a predefined layout inside the layout directory or the path to a layout file Will always start a new session, even if inside an existing session]:NEW_SESSION_WITH_LAYOUT:_files' \
 '*-c+[Change where zellij looks for the configuration file]:CONFIG:_files' \
 '*--config=[Change where zellij looks for the configuration file]:CONFIG:_files' \
 '*--config-dir=[Change where zellij looks for the configuration directory]:CONFIG_DIR:_files' \
@@ -81,6 +83,10 @@ tmux\:"`Tmux` mode allows for basic tmux keybindings functionality"))' \
 '*--styled-underlines=[Whether to use ANSI styled underlines]:STYLED_UNDERLINES:(true false)' \
 '*--serialization-interval=[The interval at which to serialize sessions for resurrection (in seconds)]:SERIALIZATION_INTERVAL: ' \
 '*--disable-session-metadata=[If true, will disable writing session metadata to disk]:DISABLE_SESSION_METADATA:(true false)' \
+'*--support-kitty-keyboard-protocol=[Whether to enable support for the Kitty keyboard protocol (must also be supported by the host terminal), defaults to true if the terminal supports it]:SUPPORT_KITTY_KEYBOARD_PROTOCOL:(true false)' \
+'*--stacked-resize=[Whether to stack panes when resizing beyond a certain size default is true]:STACKED_RESIZE:(true false)' \
+'*--show-startup-tips=[Whether to show startup tips when starting a new session default is true]:SHOW_STARTUP_TIPS:(true false)' \
+'*--show-release-notes=[Whether to show release notes on first run of a new version default is true]:SHOW_RELEASE_NOTES:(true false)' \
 '(--mouse-mode)*--disable-mouse-mode[Disable handling of mouse events]' \
 '(--pane-frames)*--no-pane-frames[Disable display of pane frames]' \
 '-h[Print help information]' \
@@ -182,6 +188,10 @@ tmux\:"`Tmux` mode allows for basic tmux keybindings functionality"))' \
 '*--styled-underlines=[Whether to use ANSI styled underlines]:STYLED_UNDERLINES:(true false)' \
 '*--serialization-interval=[The interval at which to serialize sessions for resurrection (in seconds)]:SERIALIZATION_INTERVAL: ' \
 '*--disable-session-metadata=[If true, will disable writing session metadata to disk]:DISABLE_SESSION_METADATA:(true false)' \
+'*--support-kitty-keyboard-protocol=[Whether to enable support for the Kitty keyboard protocol (must also be supported by the host terminal), defaults to true if the terminal supports it]:SUPPORT_KITTY_KEYBOARD_PROTOCOL:(true false)' \
+'*--stacked-resize=[Whether to stack panes when resizing beyond a certain size default is true]:STACKED_RESIZE:(true false)' \
+'*--show-startup-tips=[Whether to show startup tips when starting a new session default is true]:SHOW_STARTUP_TIPS:(true false)' \
+'*--show-release-notes=[Whether to show release notes on first run of a new version default is true]:SHOW_RELEASE_NOTES:(true false)' \
 '(--mouse-mode)*--disable-mouse-mode[Disable handling of mouse events]' \
 '(--pane-frames)*--no-pane-frames[Disable display of pane frames]' \
 '-h[Print help information]' \
@@ -415,6 +425,7 @@ _arguments "${_arguments_options[@]}" \
 '--y=[The y coordinates if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:Y: ' \
 '--width=[The width if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:WIDTH: ' \
 '--height=[The height if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:HEIGHT: ' \
+'--pinned=[Whether to pin a floating pane so that it is always on top]:PINNED: ' \
 '*-f[Open the new pane in floating mode]' \
 '*--floating[Open the new pane in floating mode]' \
 '(-f --floating -d --direction)*-i[Open the new pane in place of the current pane, temporarily suspending it]' \
@@ -442,6 +453,7 @@ _arguments "${_arguments_options[@]}" \
 '--y=[The y coordinates if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:Y: ' \
 '--width=[The width if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:WIDTH: ' \
 '--height=[The height if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:HEIGHT: ' \
+'--pinned=[Whether to pin a floating pane so that it is always on top]:PINNED: ' \
 '*-f[Open the new pane in floating mode]' \
 '*--floating[Open the new pane in floating mode]' \
 '(-f --floating -d --direction)*-i[Open the new pane in place of the current pane, temporarily suspending it]' \
@@ -655,6 +667,34 @@ _arguments "${_arguments_options[@]}" \
 '--help[Print help information]' \
 && ret=0
 ;;
+(toggle-pane-pinned)
+_arguments "${_arguments_options[@]}" \
+'-h[Print help information]' \
+'--help[Print help information]' \
+&& ret=0
+;;
+(stack-panes)
+_arguments "${_arguments_options[@]}" \
+'-h[Print help information]' \
+'--help[Print help information]' \
+'*::pane-ids:' \
+&& ret=0
+;;
+(change-floating-pane-coordinates)
+_arguments "${_arguments_options[@]}" \
+'*-p+[The pane_id of the floating pane, eg.  terminal_1, plugin_2 or 3 (equivalent to terminal_3)]:PANE_ID: ' \
+'*--pane-id=[The pane_id of the floating pane, eg.  terminal_1, plugin_2 or 3 (equivalent to terminal_3)]:PANE_ID: ' \
+'-x+[The x coordinates if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:X: ' \
+'--x=[The x coordinates if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:X: ' \
+'-y+[The y coordinates if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:Y: ' \
+'--y=[The y coordinates if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:Y: ' \
+'--width=[The width if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:WIDTH: ' \
+'--height=[The height if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:HEIGHT: ' \
+'--pinned=[Whether to pin a floating pane so that it is always on top]:PINNED: ' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+&& ret=0
+;;
 (help)
 _arguments "${_arguments_options[@]}" \
 '*::subcommand -- The subcommand whose help message to display:' \
@@ -677,6 +717,7 @@ _arguments "${_arguments_options[@]}" \
 '--y=[The y coordinates if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:Y: ' \
 '--width=[The width if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:WIDTH: ' \
 '--height=[The height if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:HEIGHT: ' \
+'--pinned=[Whether to pin a floating pane so that it is always on top]:PINNED: ' \
 '*-f[Open the new pane in floating mode]' \
 '*--floating[Open the new pane in floating mode]' \
 '(-f --floating -d --direction)*-i[Open the new pane in place of the current pane, temporarily suspending it]' \
@@ -700,6 +741,7 @@ _arguments "${_arguments_options[@]}" \
 '--y=[The y coordinates if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:Y: ' \
 '--width=[The width if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:WIDTH: ' \
 '--height=[The height if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:HEIGHT: ' \
+'--pinned=[Whether to pin a floating pane so that it is always on top]:PINNED: ' \
 '*-f[Open the new pane in floating mode]' \
 '*--floating[Open the new pane in floating mode]' \
 '(-f --floating)*-i[Open the new pane in place of the current pane, temporarily suspending it]' \
@@ -724,6 +766,7 @@ _arguments "${_arguments_options[@]}" \
 '--y=[The y coordinates if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:Y: ' \
 '--width=[The width if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:WIDTH: ' \
 '--height=[The height if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)]:HEIGHT: ' \
+'--pinned=[Whether to pin a floating pane so that it is always on top]:PINNED: ' \
 '(-f --floating -d --direction)*-i[Open the new pane in place of the current pane, temporarily suspending it]' \
 '(-f --floating -d --direction)*--in-place[Open the new pane in place of the current pane, temporarily suspending it]' \
 '*-f[Open the new pane in floating mode]' \
@@ -867,6 +910,9 @@ _zellij__action_commands() {
 'rename-session:' \
 'pipe:Send data to one or more plugins, launch them if they are not running' \
 'list-clients:' \
+'toggle-pane-pinned:' \
+'stack-panes:Stack pane ids Ids are a space separated list of pane ids. They should either be in the form of `terminal_<int>` (eg. terminal_1), `plugin_<int>` (eg. plugin_1) or bare integers in which case they'\''ll be considered terminals (eg. 1 is the equivalent of terminal_1)' \
+'change-floating-pane-coordinates:' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'zellij action commands' commands "$@"
@@ -878,6 +924,11 @@ _zellij__attach_commands() {
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'zellij attach commands' commands "$@"
+}
+(( $+functions[_zellij__action__change-floating-pane-coordinates_commands] )) ||
+_zellij__action__change-floating-pane-coordinates_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij action change-floating-pane-coordinates commands' commands "$@"
 }
 (( $+functions[_zellij__action__clear_commands] )) ||
 _zellij__action__clear_commands() {
@@ -1169,6 +1220,11 @@ _zellij__setup_commands() {
     local commands; commands=()
     _describe -t commands 'zellij setup commands' commands "$@"
 }
+(( $+functions[_zellij__action__stack-panes_commands] )) ||
+_zellij__action__stack-panes_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij action stack-panes commands' commands "$@"
+}
 (( $+functions[_zellij__action__start-or-reload-plugin_commands] )) ||
 _zellij__action__start-or-reload-plugin_commands() {
     local commands; commands=()
@@ -1203,6 +1259,11 @@ _zellij__action__toggle-pane-embed-or-floating_commands() {
 _zellij__action__toggle-pane-frames_commands() {
     local commands; commands=()
     _describe -t commands 'zellij action toggle-pane-frames commands' commands "$@"
+}
+(( $+functions[_zellij__action__toggle-pane-pinned_commands] )) ||
+_zellij__action__toggle-pane-pinned_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij action toggle-pane-pinned commands' commands "$@"
 }
 (( $+functions[_zellij__action__undo-rename-pane_commands] )) ||
 _zellij__action__undo-rename-pane_commands() {
