@@ -6,3 +6,4 @@ tmp/**/*
 *.pyc
 
 .vscode/
+mise.toml
