@@ -6,5 +6,5 @@ asdf_compat = false
 python = "latest"
 go = "latest"
 node = "21.2.0"
-rust = "latest"
+rust = { version = "latest", components = "llvm-tools" }
 hugo = "extended_0.141.0"
