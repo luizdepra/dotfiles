@@ -84,16 +84,16 @@ WINIT_X11_SCALE_FACTOR = "1"
 size = 11.0
 
 [font.bold]
-family = "Hack"
+family = "Hack Nerd Font"
 
 [font.bold_italic]
-family = "Hack"
+family = "Hack Nerd Font"
 
 [font.italic]
-family = "Hack"
+family = "Hack Nerd Font"
 
 [font.normal]
-family = "Hack"
+family = "Hack Nerd Font"
 
 [window]
 decorations = "full"

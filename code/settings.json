@@ -1,7 +1,7 @@
 {
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.iconTheme": "catppuccin-mocha",
-  "editor.fontFamily": "Hack, 'Droid Sans Mono', 'monospace', monospace",
+  "editor.fontFamily": "'Hack Nerd Font', Hack, 'Droid Sans Mono', 'monospace', monospace",
   "editor.renderWhitespace": "all",
   "editor.wordWrap": "on",
   "files.exclude": {
@@ -44,5 +44,9 @@
     "GitHub.copilot",
     "GitHub.copilot-chat",
     "GitHub.vscode-pull-request-github"
-  ]
+  ],
+  "chat.agent.enabled": false,
+  "chat.commandCenter.enabled": false,
+  "chat.extensionTools.enabled": false,
+  "chat.setupFromDialog": false
 }
