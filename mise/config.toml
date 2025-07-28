@@ -3,7 +3,7 @@ legacy_version_file = false
 asdf_compat = false
 
 [tools]
-python = "latest"
+python = "system"
 go = "latest"
 node = "21.2.0"
 rust = { version = "latest", components = "llvm-tools" }

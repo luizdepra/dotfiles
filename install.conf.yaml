@@ -13,6 +13,7 @@
     ~/.zlogin:
     ~/.zshenv:
     ~/.zshrc:
+    ~/.aider.conf.yml:
     ~/.config/nvim: nvim
     ~/.config/alacritty: alacritty
     ~/.config/bottom: bottom
@@ -22,6 +23,7 @@
     ~/.config/Code/User/settings.json: code/settings.json
     ~/bin:
       path: bin
+    ~/CONVENTIONS.md:
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

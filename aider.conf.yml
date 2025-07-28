@@ -1,0 +1,7 @@
+model: o4-mini
+dark-mode: true
+auto-commits: false
+watch-files: true
+read:
+  - ~/CONVENTIONS.md
+  - ./CONVENTIONS.md
