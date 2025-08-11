@@ -15,7 +15,8 @@
     "source.organizeImports": "explicit"
   },
   "editor.rulers": [
-    80, 120
+    80,
+    120
   ],
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -48,5 +49,8 @@
   "chat.agent.enabled": false,
   "chat.commandCenter.enabled": false,
   "chat.extensionTools.enabled": false,
-  "chat.setupFromDialog": false
+  "chat.setupFromDialog": false,
+  "extensions.ignoreRecommendations": true,
+  "git.openRepositoryInParentFolders": "never",
+  "terminal.integrated.tabs.location": "left"
 }
