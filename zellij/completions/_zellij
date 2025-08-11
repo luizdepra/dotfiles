@@ -84,13 +84,22 @@ tmux\:"`Tmux` mode allows for basic tmux keybindings functionality"))' \
 '*--serialization-interval=[The interval at which to serialize sessions for resurrection (in seconds)]:SERIALIZATION_INTERVAL: ' \
 '*--disable-session-metadata=[If true, will disable writing session metadata to disk]:DISABLE_SESSION_METADATA:(true false)' \
 '*--support-kitty-keyboard-protocol=[Whether to enable support for the Kitty keyboard protocol (must also be supported by the host terminal), defaults to true if the terminal supports it]:SUPPORT_KITTY_KEYBOARD_PROTOCOL:(true false)' \
+'*--web-server=[Whether to make sure a local web server is running when a new Zellij session starts. This web server will allow creating new sessions and attaching to existing ones that have opted in to being shared in the browser]:WEB_SERVER:(true false)' \
+'*--web-sharing=[Whether to allow new sessions to be shared through a local web server, assuming one is running (see the `web_server` option for more details)]:WEB_SHARING:(on off disabled)' \
 '*--stacked-resize=[Whether to stack panes when resizing beyond a certain size default is true]:STACKED_RESIZE:(true false)' \
 '*--show-startup-tips=[Whether to show startup tips when starting a new session default is true]:SHOW_STARTUP_TIPS:(true false)' \
 '*--show-release-notes=[Whether to show release notes on first run of a new version default is true]:SHOW_RELEASE_NOTES:(true false)' \
+'*--advanced-mouse-actions=[Whether to enable mouse hover effects and pane grouping functionality default is true]:ADVANCED_MOUSE_ACTIONS:(true false)' \
+'*--post-command-discovery-hook=[A command to run after the discovery of running commands when serializing, for the purpose of manipulating the command (eg. with a regex) before it gets serialized]:POST_COMMAND_DISCOVERY_HOOK: ' \
 '(--mouse-mode)*--disable-mouse-mode[Disable handling of mouse events]' \
 '(--pane-frames)*--no-pane-frames[Disable display of pane frames]' \
 '-h[Print help information]' \
 '--help[Print help information]' \
+'::web-server-ip:' \
+'::web-server-port:' \
+'::web-server-cert:' \
+'::web-server-key:' \
+'::enforce-https-for-localhost:' \
 && ret=0
 ;;
 (setup)
@@ -103,6 +112,25 @@ _arguments "${_arguments_options[@]}" \
 '*--dump-config[Dump the default configuration file to stdout]' \
 '*--clean[Disables loading of configuration file at default location, loads the defaults that zellij ships with]' \
 '*--check[Checks the configuration of zellij and displays currently used directories]' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+&& ret=0
+;;
+(web)
+_arguments "${_arguments_options[@]}" \
+'*--revoke-token=[Revoke a login token by its name]:TOKEN NAME: ' \
+'(--stop --status --create-token --revoke-token --revoke-all-tokens)*--ip=[The ip address to listen on locally for connections (defaults to 127.0.0.1)]:IP: ' \
+'(--stop --status --create-token --revoke-token --revoke-all-tokens)*--port=[The port to listen on locally for connections (defaults to 8082)]:PORT: ' \
+'(--stop --status --create-token --revoke-token --revoke-all-tokens)*--cert=[The path to the SSL certificate (required if not listening on 127.0.0.1)]:CERT:_files' \
+'(--stop --status --create-token --revoke-token --revoke-all-tokens)*--key=[The path to the SSL key (required if not listening on 127.0.0.1)]:KEY:_files' \
+'*--start[Start the server (default unless other arguments are specified)]' \
+'*--stop[Stop the server]' \
+'*--status[Get the server status]' \
+'(--stop --status --create-token --revoke-token --revoke-all-tokens)*-d[Run the server in the background]' \
+'(--stop --status --create-token --revoke-token --revoke-all-tokens)*--daemonize[Run the server in the background]' \
+'*--create-token[Create a login token for the web interface, will only be displayed once and cannot later be retrieved. Returns the token name and the token]' \
+'*--revoke-all-tokens[Revoke all login tokens]' \
+'*--list-tokens[List token names and their creation dates (cannot show actual tokens)]' \
 '-h[Print help information]' \
 '--help[Print help information]' \
 && ret=0
@@ -189,13 +217,22 @@ tmux\:"`Tmux` mode allows for basic tmux keybindings functionality"))' \
 '*--serialization-interval=[The interval at which to serialize sessions for resurrection (in seconds)]:SERIALIZATION_INTERVAL: ' \
 '*--disable-session-metadata=[If true, will disable writing session metadata to disk]:DISABLE_SESSION_METADATA:(true false)' \
 '*--support-kitty-keyboard-protocol=[Whether to enable support for the Kitty keyboard protocol (must also be supported by the host terminal), defaults to true if the terminal supports it]:SUPPORT_KITTY_KEYBOARD_PROTOCOL:(true false)' \
+'*--web-server=[Whether to make sure a local web server is running when a new Zellij session starts. This web server will allow creating new sessions and attaching to existing ones that have opted in to being shared in the browser]:WEB_SERVER:(true false)' \
+'*--web-sharing=[Whether to allow new sessions to be shared through a local web server, assuming one is running (see the `web_server` option for more details)]:WEB_SHARING:(on off disabled)' \
 '*--stacked-resize=[Whether to stack panes when resizing beyond a certain size default is true]:STACKED_RESIZE:(true false)' \
 '*--show-startup-tips=[Whether to show startup tips when starting a new session default is true]:SHOW_STARTUP_TIPS:(true false)' \
 '*--show-release-notes=[Whether to show release notes on first run of a new version default is true]:SHOW_RELEASE_NOTES:(true false)' \
+'*--advanced-mouse-actions=[Whether to enable mouse hover effects and pane grouping functionality default is true]:ADVANCED_MOUSE_ACTIONS:(true false)' \
+'*--post-command-discovery-hook=[A command to run after the discovery of running commands when serializing, for the purpose of manipulating the command (eg. with a regex) before it gets serialized]:POST_COMMAND_DISCOVERY_HOOK: ' \
 '(--mouse-mode)*--disable-mouse-mode[Disable handling of mouse events]' \
 '(--pane-frames)*--no-pane-frames[Disable display of pane frames]' \
 '-h[Print help information]' \
 '--help[Print help information]' \
+'::web-server-ip:' \
+'::web-server-port:' \
+'::web-server-cert:' \
+'::web-server-key:' \
+'::enforce-https-for-localhost:' \
 && ret=0
 ;;
 (help)
@@ -435,6 +472,7 @@ _arguments "${_arguments_options[@]}" \
 '*-s[Start the command suspended, only running it after the you first press ENTER]' \
 '*--start-suspended[Start the command suspended, only running it after the you first press ENTER]' \
 '*--skip-plugin-cache[]' \
+'(-f --floating -d --direction)*--stacked[]' \
 '-h[Print help information]' \
 '--help[Print help information]' \
 '*::command:' \
@@ -726,6 +764,7 @@ _arguments "${_arguments_options[@]}" \
 '*--close-on-exit[Close the pane immediately when its command exits]' \
 '*-s[Start the command suspended, only running after you first presses ENTER]' \
 '*--start-suspended[Start the command suspended, only running after you first presses ENTER]' \
+'(-f --floating -d --direction)*--stacked[]' \
 '-h[Print help information]' \
 '--help[Print help information]' \
 '*::command -- Command to run:' \
@@ -827,6 +866,7 @@ _zellij_commands() {
     local commands; commands=(
 'options:Change the behaviour of zellij' \
 'setup:Setup zellij and check its configuration' \
+'web:Run a web server to serve terminal sessions' \
 'list-sessions:List active sessions' \
 'ls:List active sessions' \
 'list-aliases:List existing plugin aliases' \
@@ -1274,6 +1314,11 @@ _zellij__action__undo-rename-pane_commands() {
 _zellij__action__undo-rename-tab_commands() {
     local commands; commands=()
     _describe -t commands 'zellij action undo-rename-tab commands' commands "$@"
+}
+(( $+functions[_zellij__web_commands] )) ||
+_zellij__web_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij web commands' commands "$@"
 }
 (( $+functions[_zellij__action__write_commands] )) ||
 _zellij__action__write_commands() {
