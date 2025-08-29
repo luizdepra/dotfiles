@@ -50,7 +50,5 @@
   "chat.commandCenter.enabled": false,
   "chat.extensionTools.enabled": false,
   "chat.setupFromDialog": false,
-  "extensions.ignoreRecommendations": true,
-  "git.openRepositoryInParentFolders": "never",
-  "terminal.integrated.tabs.location": "left"
+  "workbench.secondarySideBar.defaultVisibility": "hidden"
 }

@@ -3,3 +3,4 @@ nvim/plugged
 nvim/lazy-lock.json
 nvim/lazyvim.json
 zim/
+zellij/completions/
