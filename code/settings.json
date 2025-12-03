@@ -50,5 +50,6 @@
   "chat.commandCenter.enabled": false,
   "chat.extensionTools.enabled": false,
   "chat.setupFromDialog": false,
-  "workbench.secondarySideBar.defaultVisibility": "hidden"
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "gitlens.views.fileHistory.mode": "contributors"
 }
