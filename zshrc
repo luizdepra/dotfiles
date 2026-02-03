@@ -44,7 +44,23 @@ bindkey '^N' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
+function zellij_tab_name_update() {
+    if [[ -n ${ZELLIJ} ]]; then
+        local tab_name="${PWD/#$HOME/~}"
+        [[ ${tab_name} != "~" ]] && tab_name="${tab_name##*/}"
+        [[ ${#tab_name} -gt 32 ]] && tab_name="${tab_name:0:31}…"
+
+        command nohup zellij action rename-tab ${tab_name} >/dev/null 2>&1
+    fi
+}
+
+precmd() {
+    zellij_tab_name_update
+}
+
 # Load local configuration
 if [[ -f ${HOME}/.zshrc_local ]]; then
     source ${HOME}/.zshrc_local
 fi
+
+. "$HOME/.local/share/../bin/env"

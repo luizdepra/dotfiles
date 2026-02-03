@@ -1,0 +1,91 @@
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
+                // -- Catppuccin Mocha --
+                color_rosewater "#f5e0dc"
+                color_flamingo "#f2cdcd"
+                color_pink "#f5c2e7"
+                color_mauve "#cba6f7"
+                color_red "#f38ba8"
+                color_maroon "#eba0ac"
+                color_peach "#fab387"
+                color_yellow "#f9e2af"
+                color_green "#a6e3a1"
+                color_teal "#94e2d5"
+                color_sky "#89dceb"
+                color_sapphire "#74c7ec"
+                color_blue "#89b4fa"
+                color_lavender "#b4befe"
+                color_text "#cdd6f4"
+                color_subtext1 "#bac2de"
+                color_subtext0 "#a6adc8"
+                color_overlay2 "#9399b2"
+                color_overlay1 "#7f849c"
+                color_overlay0 "#6c7086"
+                color_surface2 "#585b70"
+                color_surface1 "#45475a"
+                color_surface0 "#313244"
+                color_base "#1e1e2e"
+                color_mantle "#181825"
+                color_crust "#11111b"
+
+                format_left   "#[bg=$sapphire,fg=$crust,bold] {session} #[bg=$surface0]{mode}#[bg=$surface0] {tabs}"
+                format_center ""
+                format_right  "#[bg=$surface1,fg=$flamingo,bold] {command_user}@{command_host} #[bg=$surface1,fg=$maroon,bold] {datetime} "
+                format_space  "#[bg=$surface0]"
+                format_hide_on_overlength "true"
+                format_precedence "lrc"
+
+                border_enabled  "false"
+                border_char     "─"
+                border_format   "#[bg=$surface0]{char}"
+                border_position "top"
+
+                hide_frame_except_for_search "true"
+
+                mode_normal        "#[bg=$green,fg=$crust,bold] NORMAL "
+                mode_tmux          "#[bg=$mauve,fg=$crust,bold] TMUX "
+                mode_locked        "#[bg=$red,fg=$crust,bold] LOCKED "
+                mode_pane          "#[bg=$teal,fg=$crust,bold] PANE "
+                mode_tab           "#[bg=$teal,fg=$crust,bold] TAB "
+                mode_scroll        "#[bg=$flamingo,fg=$crust,bold] SCROLL "
+                mode_enter_search  "#[bg=$flamingo,fg=$crust,bold] ENTER-SEARCH "
+                mode_search        "#[bg=$flamingo,fg=$crust,bold] SEARCH "
+                mode_resize        "#[bg=$yellow,fg=$crust,bold] RESIZE "
+                mode_rename_tab    "#[bg=$yellow,fg=$crust,bold] RENAME-TAB "
+                mode_rename_pane   "#[bg=$yellow,fg=$crust,bold] RENAME-PANE "
+                mode_move          "#[bg=$yellow,fg=$crust,bold] MOVE "
+                mode_session       "#[bg=$pink,fg=$crust,bold] SESSION "
+                mode_prompt        "#[bg=$pink,fg=$crust,bold] PROMPT "
+
+                tab_normal              "#[bg=$blue,fg=$crust,bold] {index} #[bg=$surface1,fg=$blue,bold] {name}{floating_indicator} "
+                tab_normal_fullscreen   "#[bg=$blue,fg=$crust,bold] {index} #[bg=$surface1,fg=$blue,bold] {name}{fullscreen_indicator} "
+                tab_normal_sync         "#[bg=$blue,fg=$crust,bold] {index} #[bg=$surface1,fg=$blue,bold] {name}{sync_indicator} "
+                tab_active              "#[bg=$peach,fg=$crust,bold] {index} #[bg=$surface1,fg=$peach,bold] {name}{floating_indicator} "
+                tab_active_fullscreen   "#[bg=$peach,fg=$crust,bold] {index} #[bg=$surface1,fg=$peach,bold] {name}{fullscreen_indicator} "
+                tab_active_sync         "#[bg=$peach,fg=$crust,bold] {index} #[bg=$surface1,fg=$peach,bold] {name}{sync_indicator} "
+                tab_separator           "#[bg=$surface0] "
+
+                tab_sync_indicator       " [s]"
+                tab_fullscreen_indicator " [F]"
+                tab_floating_indicator   " [f]"
+
+                command_host_command    "uname -n"
+                command_host_format     "{stdout}"
+                command_host_interval   "0"
+                command_host_rendermode "static"
+
+                command_user_command    "whoami"
+                command_user_format     "{stdout}"
+                command_user_interval   "10"
+                command_user_rendermode "static"
+
+                datetime          "{format}"
+                datetime_format   "%Y-%m-%d %H:%M"
+                datetime_timezone "Brazil/Sao_Paulo"
+            }
+        }
+    }
+}
