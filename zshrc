@@ -29,6 +29,8 @@ alias ls="eza"
 alias cat="bat"
 alias top="btm"
 
+alias zd="zellij attach -c dev"
+
 # binds
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -62,5 +64,3 @@ precmd() {
 if [[ -f ${HOME}/.zshrc_local ]]; then
     source ${HOME}/.zshrc_local
 fi
-
-. "$HOME/.local/share/../bin/env"
