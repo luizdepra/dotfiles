@@ -51,5 +51,6 @@
   "chat.extensionTools.enabled": false,
   "chat.setupFromDialog": false,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
-  "gitlens.views.fileHistory.mode": "contributors"
+  "gitlens.views.fileHistory.mode": "contributors",
+  "go.toolsManagement.autoUpdate": true
 }

@@ -84,7 +84,7 @@ layout {
 
                 datetime          "{format}"
                 datetime_format   "%Y-%m-%d %H:%M"
-                datetime_timezone "Brazil/Sao_Paulo"
+                datetime_timezone "America/Sao_Paulo"
             }
         }
     }

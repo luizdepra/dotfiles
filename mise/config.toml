@@ -5,7 +5,7 @@ asdf_compat = false
 [tools]
 python = "latest"
 go = "latest"
-node = "21.2.0"
+node = "latest"
 rust = { version = "latest", components = "llvm-tools" }
 hugo-extended = "latest"
 atuin = "latest"
@@ -24,3 +24,7 @@ zoxide = "latest"
 jq = "latest"
 yq = "latest"
 lazygit = "latest"
+postgres = "15"
+difftastic = "latest"
+"github:can1357/oh-my-pi" = "latest"
+redis = "latest"
